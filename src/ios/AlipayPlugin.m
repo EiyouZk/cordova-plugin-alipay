@@ -78,7 +78,9 @@
                        orderSpec, signedString, @"RSA"];
         
 
-        [[AlipaySDK defaultService] payOrder:orderString fromScheme:[NSString stringWithFormat:@"a%@", self.partner] callback:^(NSDictionary *resultDic) {
+		NSString * schemename = @"GliAlipay";
+		
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:schemename callback:^(NSDictionary *resultDic) {
             if ([[resultDic objectForKey:@"resultStatus"]  isEqual: @"9000"]) {
                 [self successWithCallbackID:self.currentCallbackId messageAsDictionary:resultDic];
             } else {

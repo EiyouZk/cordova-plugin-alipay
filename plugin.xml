@@ -15,9 +15,9 @@
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <preference name="PARTNER_ID"/>
+  <!-- <preference name="PARTNER_ID"/>
   <preference name="SELLER_ACCOUNT"/>
-  <preference name="PRIVATE_KEY"/>
+  <preference name="PRIVATE_KEY"/> -->
 
   <js-module src="www/alipay.js" name="alipay">
     <clobbers target="alipay" />
@@ -25,9 +25,9 @@
 
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
-      <preference name="partner" value="$PARTNER_ID" />
+      <!-- <preference name="partner" value="$PARTNER_ID" />
       <preference name="seller" value="$SELLER_ACCOUNT" />
-      <preference name="privatekey" value="$PRIVATE_KEY" />
+      <preference name="privatekey" value="$PRIVATE_KEY" /> -->
       <feature name="AliPay">
         <param name="android-package" value="org.ali.alipay.AliPayPlugin"/>
         <param name="onload" value="true" />
@@ -62,9 +62,9 @@
 
   <platform name="ios">
     <config-file target="config.xml" parent="/widget">
-      <preference name="partner" value="$PARTNER_ID" />
+      <!-- <preference name="partner" value="$PARTNER_ID" />
       <preference name="seller" value="$SELLER_ACCOUNT" />
-      <preference name="privatekey" value="$PRIVATE_KEY" />
+      <preference name="privatekey" value="$PRIVATE_KEY" /> -->
       <feature name="AliPay">
         <param name="ios-package" value="AlipayPlugin" />
         <param name="onload" value="true" />
@@ -78,7 +78,7 @@
               <string>alipay</string>
               <key>CFBundleURLSchemes</key>
               <array>
-                  <string>a$PARTNER_ID</string>
+                  <string>GliAlipay</string>
               </array>
           </dict>
       </array>
