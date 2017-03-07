@@ -27,23 +27,23 @@ import org.apache.cordova.PluginResult;
 public class AliPayPlugin extends CordovaPlugin {
     private static String TAG = "AliPayPlugin";
 
-    //商户PID
+//    //商户PID
     private String partner = "";
-    //商户收款账号
+//    //商户收款账号
     private String seller = "";
-    //商户私钥，pkcs8格式
-    private String APPID = "2016083001824756";
-
+//    //商户私钥，pkcs8格式
+//    private String APPID = "2016083001824756";
+//
     private String privateKey = "";
-
-    protected CallbackContext currentCallbackContext;
+//
+//    protected CallbackContext currentCallbackContext;
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        partner = webView.getPreferences().getString("partner", "");
-        seller = webView.getPreferences().getString("seller", "");
-        privateKey = webView.getPreferences().getString("privatekey", "");
+//        partner = webView.getPreferences().getString("partner", "");
+//        seller = webView.getPreferences().getString("seller", "");
+//        privateKey = webView.getPreferences().getString("privatekey", "");
     }
 
     @Override
@@ -132,9 +132,9 @@ public class AliPayPlugin extends CordovaPlugin {
     public void pay(String tradeNo, String subject, String body, String in_payinfo, String notifyUrl, final CallbackContext callbackContext) {
         //currentCallbackContext = callbackContext;
 
-        Map<String, String> params = buildOrderParamMap("2016083001824756", tradeNo , partner, seller, subject, body, "0.01");
-        String orderParam = buildOrderParam(params);
-        String sign = getSign(params, privateKey);
+//        Map<String, String> params = buildOrderParamMap("2016083001824756", tradeNo , partner, seller, subject, body, "0.01");
+//        String orderParam = buildOrderParam(params);
+//        String sign = getSign(params, privateKey);
 
         //final String payInfo = orderParam + "&" + sign;
 
