@@ -8,8 +8,8 @@
   <license>MIT license</license>
   <description>支付宝支付插件，alipay payment</description>
   <keywords>alipay, payment</keywords>
-  <repo>https://github.com/CUGCQH/cordova-plugin-alipay</repo>
-  <issue>https://github.com/CUGCQH/cordova-plugin-alipay/issues</issue>
+  <repo>https://github.com/EiyouZk/cordova-plugin-alipay</repo>
+  <issue>https://github.com/EiyouZk/cordova-plugin-alipay/issues</issue>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
