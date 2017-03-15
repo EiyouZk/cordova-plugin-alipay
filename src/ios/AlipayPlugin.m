@@ -97,7 +97,7 @@
 {
     NSURL* url = [notification object];
     
-    if ([url isKindOfClass:[NSURL class]] && [url.scheme isEqualToString:[NSString stringWithFormat:@"a%@", self.partner]])
+    if ([url isKindOfClass:[NSURL class]] && [url.scheme isEqualToString:@"GliAlipay", self.partner]])
     {
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             if ([[resultDic objectForKey:@"resultStatus"]  isEqual: @"9000"]) {
