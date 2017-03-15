@@ -47,7 +47,8 @@
     NSString   *body     = [args objectForKey:@"body"];
     NSString   *price    = [args objectForKey:@"price"];
     NSString   *notifyUrl    = [args objectForKey:@"notifyUrl"];
-
+    NSString   *payinfo    = [args objectForKey:@"payinfo"];
+    
     Order *order = [[Order alloc] init];
     order.partner = self.partner;
     order.seller = self.seller;
@@ -73,14 +74,13 @@
 
     //将签名成功字符串格式化为订单字符串,请严格按照该格式
     NSString *orderString = nil;
-    if (signedString != nil) {
-        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                       orderSpec, signedString, @"RSA"];
+    if (signedString != nil||true) {
+        //orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"", orderSpec, signedString, @"RSA"];
+        
+        orderString = payinfo;
         
 
-		NSString * schemename = @"GliAlipay";
-		
-        [[AlipaySDK defaultService] payOrder:orderString fromScheme:schemename callback:^(NSDictionary *resultDic) {
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:@"alipaySchemes" callback:^(NSDictionary *resultDic) {
             if ([[resultDic objectForKey:@"resultStatus"]  isEqual: @"9000"]) {
                 [self successWithCallbackID:self.currentCallbackId messageAsDictionary:resultDic];
             } else {
