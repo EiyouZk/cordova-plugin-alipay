@@ -1,22 +1,12 @@
 Cordova 支付宝支付插件
 ======
 
-## 最新更新
 
-1. 增加callback
-2. 默认使用自动安装的方法
-3. 去除了对URL Scheme的依赖
+## 安装命令
 
-## 支持的系统
+	cordova plugin add https://github.com/EiyouZk/cordova-plugin-alipay.git
 
-* iOS
-* Android
 
-## 自动安装（Cordova > v5.1.1）
-
-	cordova plugin add https://github.com/EiyouZk/cordova-plugin-alipay.git --variable PARTNER_ID=[你的商户PID可以在账户中查询] --variable SELLER_ACCOUNT=[你的商户支付宝帐号] --variable PRIVATE_KEY=[你生成的private key]
-
-**注意**：PRIVATE_KEY的值是生成的私钥的**内容**，要求是**PKCS**格式，需要去掉——-BEGIN PRIVAT KEY——-和——-END PRIVATE KEY——-，以及**空格**和**换行**。关于私钥的说明详见下面<a href='#关于私钥'>关于私钥</a>部分
 
 ## 使用方法
 ```
@@ -34,8 +24,11 @@ window.alipay.pay({
 * subject 这个字段会显示在支付宝付款的页面
 * body 订单详情，没找到会显示哪里
 * price 价格，支持两位小数
+* payinfo 订单休息
 * function(successResults){} 是成功之后的回调函数
 * function(errorResults){} 是失败之后的回调函数
+
+注：改变之前加密、签名均在客户端的方式，有服务端生成订单信息以及加密、签名之后，通过payinfo传入，所以实际参数只有payinfo以及成功或者失败的回调函数。
 
 `successResults`和`errorResults`分别是成功和失败之后支付宝SDK返回的结果，类似如下内容
 
@@ -52,7 +45,7 @@ window.alipay.pay({
 {
 	memo: "用户中途取消", 
 	resultStatus: "6001", 
-	result: ""	
+	result: ""
 }
 ```
 
@@ -70,20 +63,8 @@ window.alipay.pay({
 1. 使用git命令将插件下载到本地，并标记为$CORDOVA_PLUGIN_DIR
 
 		git clone https://github.com/CUGCQH/cordova-plugin-alipay.git && cd cordova-plugin-alipay && export CORDOVA_PLUGIN_DIR=$(pwd)
-		
-2. 修改$CORDOVA_PLUGIN_DIR/plugin.xml，删除下面这一行：
 
-		<preference name="PRIVATE_KEY"/>
-		
-2. 修改$CORDOVA_PLUGIN_DIR/plugin.xml，将
-
-		<preference name="privatekey" value="$PRIVATE_KEY" />
-改成
-
-		<preference name="privatekey" value="你生成的private key的内容"/>
-
-	**注意**：总共有两处
-3. 安装
+2. 安装
 
 		cordova plugin add $CORDOVA_PLUGIN_DIR --variable PARTNER_ID=[你的商户PID可以在账户中查询] --variable SELLER_ACCOUNT=[你的商户支付宝帐号]
 
